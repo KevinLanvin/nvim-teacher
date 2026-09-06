@@ -1,4 +1,4 @@
-One more door for this campaign, and it's not vanilla vim this time — it's a plugin (mini.surround) configured to use the classic vim-surround keys, because wrapping text in quotes and brackets comes up constantly once you're actually writing code.
+One more door for this campaign, and it's not vanilla vim this time — it's a plugin (mini.surround) configured to use the classic vim-surround keys, for wrapping text in quotes and brackets.
 
 Wrap this word: hello
 

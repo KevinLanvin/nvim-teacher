@@ -2,15 +2,31 @@
 
 ## Purpose
 
-This folder does **not** contain the Neovim config itself. The actual config
-lives at `~/.config/nvim` and is a LazyVim setup tailored for web development
-(Vue 3 + NestJS/TypeScript), built in an earlier session.
+The actual config lives at `~/.config/nvim` and is a LazyVim setup tailored
+for web development (Vue 3 + NestJS/TypeScript), built in an earlier session.
 
 The job of this project is to produce a set of **learning-instruction files**
 that teach the user (a working dev, not a Neovim beginner) how to actually use
 that config day-to-day. Each file should cover **one aspect** of the config —
 a plugin, a workflow, or a set of related keymaps — so the user can work
 through them incrementally rather than reading one giant manual.
+
+## `nvim-config/` — the config backup, not the lesson source of truth
+
+`nvim-config/` is a plain snapshot copy of `~/.config/nvim` (init.lua,
+lazyvim.json, `lazy-lock.json` for exact plugin-version pins, stylua.toml,
+.neoconf.json, and `lua/`), kept here purely so cloning this repo and running
+`./install.sh` reproduces the exact same nvim setup on a new machine —
+`install.sh` symlinks `nvim-config/` to `~/.config/nvim` (backing up anything
+already there first), then lazy.nvim installs the pinned plugins on next
+launch.
+
+This is a snapshot, not a live link: it only reflects `~/.config/nvim` as of
+whenever it was last copied over, so **it can drift out of date**. Lessons
+must still be verified against the real `~/.config/nvim` per "Source of
+truth" below, never against `nvim-config/` — re-sync `nvim-config/` (re-copy
+the files listed above) whenever the live config changes and you want the
+backup to stay current.
 
 ## Source of truth
 

@@ -203,14 +203,24 @@ that still operate at single-file scope (mini.surround, folding):
   call. Global (A-Z) and numbered (0-9) marks are cross-file, so those stay
   in Act 2's `02-bookmarks-global.md` instead, which now recaps this level
   by name ("back in Move") rather than by a campaign number of its own.
-- `02-write/` — entering insert mode (i/a/I/A/o/O), plus a mini.surround
-  level (`03-mini-surround.md`)
+- `02-write/` — entering insert mode (i/a/I/A/o/O). Two levels
+  (`01-entering-insert.md`, `02-opening-lines.md`).
 - `03-commands/` — action+movement combos (delete/change/undo/yank, text
-  objects, registers). Still needs a future level for counted motions/combos
-  (`3w`, `d2j`, `y3w`) and this config's relative line numbers
-  (`relativenumber` is on by default via LazyVim core, unmodified here) — a
-  count composes directly with the combos already taught here, so it belongs
-  in this campaign rather than the new `06-tools/`.
+  objects, registers), plus a mini.surround level (`08-mini-surround.md`)
+  as the campaign's closer. mini.surround's `ys`/`ds`/`cs` are the same
+  operator+motion combo shape as `d`/`c`/`y`, just plugin-provided, so it
+  belongs in this combo campaign rather than `06-tools/` (reserved for
+  standalone commands that AREN'T combos). Originally lived in `02-write/`
+  right after insert-mode entry, but that taught `ysiw"` before `iw` text
+  objects existed yet (those come from `04-text-object-combos.md`) — moved
+  here, after text objects, to fix that forward reference. `07-counted-motions.md`
+  exists as an empty placeholder (see below) sitting between text objects
+  and mini.surround; re-sequence if it gets written before mini.surround
+  does. Campaign still needs a level for counted motions/combos (`3w`,
+  `d2j`, `y3w`) and this config's relative line numbers (`relativenumber`
+  is on by default via LazyVim core, unmodified here) — a count composes
+  directly with the combos already taught here, so it belongs in this
+  campaign rather than `06-tools/`.
 - `04-visual-mode/` — v/V/Ctrl-v, visual text objects, gv/o
 - `05-searching/` — `/`, `?`, `*`, `#`, n/N
 

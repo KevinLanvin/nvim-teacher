@@ -8,6 +8,6 @@ Now press "0p instead — that always pastes your last YANK specifically, no mat
 
 That " is doing real work: it lets you pick WHICH register an action reads from or writes to. The common ones worth knowing: "" is the default (unnamed) register, holding whatever you last yanked or deleted; "0 holds your last yank only, untouched by later deletes; "1 through "9 are a rolling history of your last several deletes; "_ is the black hole — delete into it and nothing gets overwritten, useful when you want to delete without clobbering what you yanked; "a through "z are named registers you choose yourself, for keeping several things around at once; "+ and "* both reach your system clipboard, for pasting into other apps.
 
-Campaign cleared — Commands is fully unlocked. Next up, Campaign 4: Visual mode. Cursor on the file below, gf to load it.
+One more combo family before Commands is cleared. Cursor on the file below, gf to load it.
 
-../04-visual-mode/01-character-visual.md
+08-mini-surround.md

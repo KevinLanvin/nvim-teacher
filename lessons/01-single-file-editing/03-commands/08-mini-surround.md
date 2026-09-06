@@ -1,4 +1,4 @@
-One more door for this campaign, and it's not vanilla vim this time — it's a plugin (mini.surround) configured to use the classic vim-surround keys, for wrapping text in quotes and brackets.
+This one's not vanilla vim — it's a plugin (mini.surround) configured to use the classic vim-surround keys, for wrapping text in quotes and brackets.
 
 Wrap this word: hello
 
@@ -16,6 +16,6 @@ ds deletes a surrounding instead of adding one, no motion needed, just say which
 
 cs changes one surrounding into another: old character, then new one. Cursor on the line above, press cs'" — the single quotes become double quotes.
 
-Campaign cleared — Write is fully unlocked: i, a, I, A, o, O, and now ys/ds/cs for wrapping things in quotes and brackets. Next up, Campaign 3: Commands. Cursor on the file below, gf to load it.
+Campaign cleared — Commands is fully unlocked, ys/ds/cs included. Next up, Campaign 4: Visual mode. Cursor on the file below, gf to load it.
 
-../03-commands/01-the-combo-system.md
+../04-visual-mode/01-character-visual.md

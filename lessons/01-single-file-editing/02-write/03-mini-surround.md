@@ -16,10 +16,6 @@ ds deletes a surrounding instead of adding one, no motion needed, just say which
 
 cs changes one surrounding into another: old character, then new one. Cursor on the line above, press cs'" — the single quotes become double quotes.
 
-select and wrap me
-
-Visual mode gets its own version: select "select" above with viw, then press S( instead of ys( — same job as ys, just for a Visual selection instead of a motion. Quirk worth knowing: normal-mode S still does its regular vanilla job (substitute the whole line) — it's only Visual-mode S that's been repurposed for surrounding here.
-
-Campaign cleared — Write is fully unlocked: i, a, I, A, o, O, and now ys/ds/cs/S for wrapping things in quotes and brackets. Next up, Campaign 3: Commands. Cursor on the file below, gf to load it.
+Campaign cleared — Write is fully unlocked: i, a, I, A, o, O, and now ys/ds/cs for wrapping things in quotes and brackets. Next up, Campaign 3: Commands. Cursor on the file below, gf to load it.
 
 ../03-commands/01-the-combo-system.md

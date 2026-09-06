@@ -214,13 +214,13 @@ that still operate at single-file scope (mini.surround, folding):
   right after insert-mode entry, but that taught `ysiw"` before `iw` text
   objects existed yet (those come from `04-text-object-combos.md`) — moved
   here, after text objects, to fix that forward reference. `07-counted-motions.md`
-  exists as an empty placeholder (see below) sitting between text objects
-  and mini.surround; re-sequence if it gets written before mini.surround
-  does. Campaign still needs a level for counted motions/combos (`3w`,
-  `d2j`, `y3w`) and this config's relative line numbers (`relativenumber`
-  is on by default via LazyVim core, unmodified here) — a count composes
-  directly with the combos already taught here, so it belongs in this
-  campaign rather than `06-tools/`.
+  sits between text objects and mini.surround, covering counts composed
+  with plain movements (`3w`) and with combos across delete/change/yank
+  (`d3l`, `c2w`, `d2j`/`y2j`, `3dd`/`3cc`/`3yy`), plus a count in front of
+  `p` (repeats the paste, since `p` is a complete command rather than a
+  movement `d`/`c`/`y` can pair with) and this config's relative line
+  numbers (`relativenumber` is on by default via LazyVim core, unmodified
+  here) as the easy way to read off a count for any of the above.
 - `04-visual-mode/` — v/V/Ctrl-v, visual text objects, gv/o
 - `05-searching/` — `/`, `?`, `*`, `#`, n/N
 

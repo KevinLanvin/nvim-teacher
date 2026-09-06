@@ -8,7 +8,15 @@ This sentence is filler you can safely butcher — cursor on "filler", press dw 
 
 Cursor right where the arrow points on the line above, press d$ — one more rep of the to-end-of-line combo, so it's second nature going forward.
 
-One more delete combo, borrowing tools from Jumps and Bookmarks Local: ``` d`` ``` deletes back to wherever you jumped from, same shape as `` d`a `` but targeting the automatic last-jump mark instead of one you named yourself. Cursor on the HOME line below to try it.
+    trim up to the semicolon; keep the rest
+
+d isn't limited to w or $ — any motion that lands you somewhere works with it. Cursor at the start of that line, press df; — f; is the find-char move from Move, and together they delete everything up to AND including that semicolon.
+
+    trim up to the semicolon; keep the semicolon too
+
+Same idea, one character short: cursor at the start of that line, press dt; — t stops one character before its target, so this time the semicolon survives and everything before it is gone.
+
+One more delete combo: ``` d`` ``` deletes back to wherever you jumped from, same shape as `` d`a `` but targeting the automatic last-jump mark instead of one you named yourself. Cursor on the HOME line below to try it.
 
 HOME — this is your anchor.
 

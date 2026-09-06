@@ -2,6 +2,10 @@ callSomething(delete all of this, keep the parens)
 
 You just learned % jumps to a matching paren. This combo skips the jumping and grabs everything inside in one move: cursor anywhere inside the parens above, press di( — "delete inner paren" — gone, but the ( and ) themselves survive. New combo unlocked: text objects don't care exactly where your cursor is, only which pair it's inside.
 
+callSomething(delete this and the parens with it)
+
+da( is the "around" version — cursor anywhere inside the parens above, press da( — this time the ( and ) go too, nothing left where the call was. Contrast with di( a moment ago, which left the parens standing.
+
 callSomething(type your own text here)
 
 Same idea, but changing instead of deleting: cursor inside these parens, press ci( — deletes the inside and drops you into insert mode, type something new, then jk.

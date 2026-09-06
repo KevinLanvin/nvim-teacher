@@ -1,4 +1,4 @@
-This one's not vanilla vim — it's a plugin (mini.surround) configured to use the classic vim-surround keys, for wrapping text in quotes and brackets.
+New tool unlocked: surrounding. This config gives you ys/ds/cs for wrapping text in quotes and brackets.
 
 Wrap this word: hello
 

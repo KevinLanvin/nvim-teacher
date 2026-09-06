@@ -4,7 +4,7 @@ Went too far back? Ctrl-r redoes, walking forward through that same history agai
 
     mangle this line a couple different ways
 
-Try it: make two or three small edits to the line above (delete a word, type something, whatever), then press U — undoes ALL the changes you just made to that one line in one shot, not just the last one. Press U again and it flips back to redo them, toggling between the two states.
+Try it: make two or three small edits to the line above (delete a word, type something, whatever), then press U — it reverts that ONE line back to how it looked before you started touching it just now, undoing that whole run of edits in one shot. Press U again and it flips back to redo them, toggling between the two states.
 
 Ready for the next level? Cursor on the file below, gf to load it.
 

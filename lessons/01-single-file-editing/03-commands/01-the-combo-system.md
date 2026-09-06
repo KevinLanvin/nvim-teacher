@@ -4,7 +4,7 @@ Welcome to Campaign 3: Commands. Before you learn any specific one, learn the sy
 
 d is an action — delete. On its own it does nothing yet, it's waiting for a movement to tell it how much to delete. Press dw on the line above, cursor on "chop" — d is the action, w is the movement you already know from Campaign 1, together dw deletes just that first word.
 
-    trim everything after this arrow →
+    trim everything after this arrow →   remove this part
 
 Same action, different movement: press d$ on the line above, cursor right on the arrow — d is still the action, $ (also from Campaign 1) is the movement, and together they delete from the cursor to the end of the line.
 

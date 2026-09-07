@@ -206,7 +206,7 @@ that still operate at single-file scope (mini.surround, folding):
 - `02-write/` — entering insert mode (i/a/I/A/o/O). Two levels
   (`01-entering-insert.md`, `02-opening-lines.md`).
 - `03-commands/` — action+movement combos (delete/change/undo/yank, text
-  objects, registers), plus a mini.surround level (`08-mini-surround.md`)
+  objects, registers), plus a mini.surround level (`10-mini-surround.md`)
   as the campaign's closer. mini.surround's `ys`/`ds`/`cs` are the same
   operator+motion combo shape as `d`/`c`/`y`, just plugin-provided, so it
   belongs in this combo campaign rather than `06-tools/` (reserved for
@@ -214,13 +214,24 @@ that still operate at single-file scope (mini.surround, folding):
   right after insert-mode entry, but that taught `ysiw"` before `iw` text
   objects existed yet (those come from `04-text-object-combos.md`) — moved
   here, after text objects, to fix that forward reference. `07-counted-motions.md`
-  sits between text objects and mini.surround, covering counts composed
+  sits between text objects and the closer, covering counts composed
   with plain movements (`3w`) and with combos across delete/change/yank
   (`d3l`, `c2w`, `d2j`/`y2j`, `3dd`/`3cc`/`3yy`), plus a count in front of
   `p` (repeats the paste, since `p` is a complete command rather than a
   movement `d`/`c`/`y` can pair with) and this config's relative line
   numbers (`relativenumber` is on by default via LazyVim core, unmodified
   here) as the easy way to read off a count for any of the above.
+  `08-indent-combos.md` and `09-comment-combos.md` sit right after that,
+  same operator+motion shape as `d`/`c`/`y` (`>`/`<` shift by one
+  shiftwidth — 2 spaces, `expandtab` on, both LazyVim core defaults,
+  unmodified here — `=` reindents to context instead of a fixed step; `gc`
+  toggles a comment using this config's `folke/ts-comments.nvim`, a
+  LazyVim core plugin providing native `gcc`/`gc`+motion with
+  treesitter-aware `commentstring`, no custom spec in `lua/plugins/`).
+  Both pair with the `ip`/`ap` text objects and counts already taught, so
+  they land after `07-counted-motions.md` and before the mini.surround
+  closer, keeping `10-mini-surround.md` as the campaign's actual last
+  level.
 - `04-visual-mode/` — v/V/Ctrl-v, visual text objects, gv/o
 - `05-searching/` — `/`, `?`, `*`, `#`, n/N
 

@@ -43,4 +43,4 @@ One more thing that makes every count above easier to use for real: this config'
 
 Ready for the next level? Cursor on the file below, gf to load it.
 
-08-mini-surround.md
+08-indent-combos.md

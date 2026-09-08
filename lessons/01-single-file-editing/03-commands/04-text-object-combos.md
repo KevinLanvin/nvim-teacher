@@ -21,6 +21,16 @@ between with { and } back in Campaign 1.
 
 Cursor anywhere inside that chunk above, press dip — "delete inner paragraph" — the whole chunk disappears at once, no need to dd each line. cip does the same but drops you into insert mode after, ready to type a replacement.
 
+<div class="example">
+  <p>delete this content, keep the tags</p>
+</div>
+
+Text objects aren't limited to punctuation pairs — dit deletes the content between a tag's opening and closing halves, leaving the tags themselves. Cursor anywhere inside the <p> tags above, press dit — the text is gone but <p></p> stays. New combo unlocked: t is the tag text object, same inner/around pattern as everything else in this campaign, just matched by tag name instead of a punctuation pair. Works on any tag-shaped markup — HTML, JSX, Vue templates.
+
+<div class="example">delete the whole element, tags included</div>
+
+dat takes the tags with it. Cursor anywhere inside the <div> above, press dat — the entire element disappears, opening tag, closing tag, and all. Contrast with dit a moment ago, which left the tags standing.
+
 Ready for the next level? Cursor on the file below, gf to load it.
 
 05-undo-redo.md

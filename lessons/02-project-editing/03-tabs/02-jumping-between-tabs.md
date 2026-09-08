@@ -10,4 +10,6 @@ Open a couple more tabs with <leader><tab><tab> so you've got four or five stack
 
 Clean up before you go: <leader><tab>o to kill the extras, back down to one tab.
 
-Campaign cleared — Tabs is fully unlocked: <leader><tab><tab>, <leader><tab>d, <leader><tab>o, gt/gT (and their <leader><tab>]/[ twins), and <leader><tab>f/l.
+Campaign cleared — Tabs is fully unlocked: <leader><tab><tab>, <leader><tab>d, <leader><tab>o, gt/gT (and their <leader><tab>]/[ twins), and <leader><tab>f/l. Next up, Campaign 4: LazyVim Basics. Cursor on the file below, gf to load it.
+
+../04-lazyvim-basics/01-which-key.md

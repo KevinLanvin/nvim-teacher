@@ -201,7 +201,7 @@ that still operate at single-file scope (mini.surround, folding):
   throughout, no plugin. Marks were folded into Move (rather than kept as
   their own campaign) because they're fundamentally a movement tool — user
   call. Global (A-Z) and numbered (0-9) marks are cross-file, so those stay
-  in Act 2's `02-bookmarks-global.md` instead, which now recaps this level
+  in Act 2's `02-bookmarks-global/` instead, which now recaps this level
   by name ("back in Move") rather than by a campaign number of its own.
 - `02-write/` — entering insert mode (i/a/I/A/o/O). Two levels
   (`01-entering-insert.md`, `02-opening-lines.md`).
@@ -231,7 +231,13 @@ that still operate at single-file scope (mini.surround, folding):
   Both pair with the `ip`/`ap` text objects and counts already taught, so
   they land after `07-counted-motions.md` and before the mini.surround
   closer, keeping `10-mini-surround.md` as the campaign's actual last
-  level.
+  level. `04-text-object-combos.md` also covers `dit`/`dat`, the tag text
+  object — this is `mini.ai`'s `t` custom text object (LazyVim core,
+  `lua/plugins/coding.lua`), a plain Lua-pattern match on `<tag>...</tag>`,
+  not treesitter-based, so it works in any filetype including this
+  campaign's own `.md` lesson files. Originally taught inside a planned
+  Act 2 Vue SFC lesson; that lesson got cut entirely (see Act 2 below), so
+  this is now the only place it's taught, not a recall.
 - `04-visual-mode/` — v/V/Ctrl-v, visual text objects, gv/o
 - `05-searching/` — `/`, `?`, `*`, `#`, n/N
 
@@ -277,52 +283,164 @@ that still operate at single-file scope (mini.surround, folding):
   definition) and `gd` are both deliberately excluded — `gf` for being
   cross-file, and `gd` because LazyVim's LSP remaps it to go-to-definition
   in this config (verified: `lazyvim/plugins/lsp/keymaps.lua:23`), not
-  vanilla vim's declaration search, so it belongs in the future
-  TypeScript/NestJS LSP lesson instead. Since this is now the last
-  planned campaign of Act 1, its final level ends the arc instead of
-  teasing a next campaign.
+  vanilla vim's declaration search, so it belongs in Act 2's future LSP
+  Basics campaign instead (see Act 2 below) — that's where `gf` finally
+  gets taught explicitly too, despite being used implicitly since the very
+  first campaign chain-link. Since this is now the last planned campaign
+  of Act 1, its final level ends the arc instead of teasing a next
+  campaign.
 
 ## Act 2: Project Editing — `lessons/02-project-editing/`
 
 Anything that spans more than one file — buffers, windows, tabs, cross-file
-marks, and LazyVim's own navigation/LSP/formatting tooling:
+marks, and LazyVim's own navigation/LSP/completion tooling:
 
-- `02-bookmarks-global.md` — uppercase (A-Z) marks demoed with a real
-  cross-file `gf` round-trip into Act 1's `01-move/`, and numbered (0-9)
-  marks (automatic, restored via `shada` across sessions) — vanilla vim, no
-  plugin. Single file. Recaps `:marks`/`:delmarks`/`dma`/`dm!` from Act 1's
-  `01-move/08-bookmarks-local.md` (the final level of Move), which cover
-  global marks identically. Numbered `02` (not `01`) because
-  `01-buffers-and-splits/` is meant to come first once it's written.
+- `01-buffers-and-splits/` — buffers (`01-buffers.md`: `H`/`L` cycling via
+  LazyVim's core remap, `<leader>bb` alternate buffer, `<leader>bd`/`bD`,
+  `<leader>bj` buffer pick, `<leader>,` Snacks buffer picker, bulk-close
+  `<leader>bo`/`bi`/`bA`) and window splits (`02-splits.md`:
+  `<leader>-`/`<leader>|`, `Ctrl-hjkl` window nav, `<leader>wd`,
+  `Ctrl-arrows` resize, `Ctrl-w H/J/K/L` move window to edge, `<leader>wm`
+  zoom toggle).
+- `02-bookmarks-global/` — a folder holding a single level
+  (`01-global-and-numbered-marks.md`), kept as its own campaign folder
+  rather than a bare `02-bookmarks-global.md` for filesystem consistency
+  with its sibling campaigns even though the content fits one file. Covers
+  uppercase (A-Z) marks demoed with a real cross-file `gf` round-trip into
+  Act 1's `01-move/`, and numbered (0-9) marks (automatic, restored via
+  `shada` across sessions) — vanilla vim, no plugin. Recaps
+  `:marks`/`:delmarks`/`dma`/`dm!` from Act 1's `01-move/08-bookmarks-local.md`
+  (the final level of Move), which cover global marks identically. The
+  return half of the round-trip uses `` `Z `` itself (a global mark jumps
+  across files on its own, no `gf` needed) — a previous version of this
+  level had a redundant, path-broken "gf back" instruction after the ``
+  `Z `` combo; removed when this campaign got moved into its own folder.
 - `03-tabs/` — tab management (`<leader><tab>` prefix:
   `tabnew`/`tabclose`/`tabonly`/`tabfirst`/`tablast`, plus vanilla
   `gt`/`gT`).
-
-**Not yet written:**
-- `01-buffers-and-splits/` — buffers (`:bnext`/`:bprev`/`:b`) and window
-  splits (`:split`/`:vsplit`, `Ctrl-w` navigation). This is also where
-  LazyVim's core remap of normal-mode `H`/`L` to prev/next buffer belongs
-  (`H`/`L` stay vanilla screen-position only in visual/operator-pending
-  mode) — it was deliberately deferred out of the Move campaign so it
-  could be taught alongside real buffer workflow instead of as a stray
-  gotcha. Once written, splice it into the chain right after Act 1's
-  `05-searching/`, ahead of `02-bookmarks-global.md`.
-- `04-lazyvim-basics/` — which-key, file explorer, fuzzy finding (LazyVim
-  defaults, not custom config).
-- `05-vue-sfc-editing/` — Vue 3 SFC editing: LSP, treesitter, `<script
-  lang="ts">` highlighting.
-- `06-typescript-nestjs-lsp/` — TypeScript/NestJS LSP workflow: go to def,
-  references, diagnostics. Also where `gd` belongs (LazyVim's LSP remaps
-  it to go-to-definition in this config, verified:
-  `lazyvim/plugins/lsp/keymaps.lua:23` — not vanilla vim's declaration
-  search, so it was excluded from Act 1's `06-go-actions`).
-- `07-eslint-prettier/` — ESLint + Prettier extras: format-on-save, lint
-  signs, fix commands.
+- `04-lazyvim-basics/` — which-key (`01-which-key.md`), file explorer
+  (`02-file-explorer.md`), fuzzy finding (`03-fuzzy-finding.md`),
+  project-wide grep (`04-project-grep.md`), and quickfix list navigation
+  (`05-quickfix.md`) — grep and quickfix are bundled here because they're
+  the primary project-search surfaces, natural companions to fuzzy
+  finding. The file explorer is **Snacks Explorer, not neo-tree** — verify
+  this before ever touching this lesson again: `neo-tree.nvim` sits on
+  disk as a dependency but is never activated. LazyVim's default-extras
+  mechanism (`lazyvim/config/init.lua`'s `get_defaults()`/
+  `register_defaults()`, auto-imported by `lazyvim/plugins/xtras.lua`)
+  picks the first enabled candidate per slot, and since this config's
+  `lazyvim.json` has `install_version: 8`, `snacks` sorts before
+  `neo-tree` for the `explorer` slot — confirmed live. `02-file-explorer.md`
+  covers root-changing (`<BS>` up to the parent, `.` down into the
+  directory under the cursor — added after a live session where a nested
+  `package.json` in `05-lsp-basics/` made an attached LSP client's root
+  win LazyVim's root-detection, rooting `<leader>e` there instead of the
+  repo root; see that campaign's entry below for the full mechanism),
+  open-in-split (`<C-s>`/`<C-v>`, inherited from Snacks' generic picker
+  keys, not explorer-specific — note `<C-t>` is repurposed to open a
+  terminal instead of a tab, just for this source), and move (`m`:
+  renames when nothing's selected, moves the Tab-selected files into the
+  current directory otherwise — verified against `snacks.nvim`'s
+  `explorer/actions.lua`). `04-project-grep.md` and `05-quickfix.md` are
+  written as a matched pair: the grep level's practice searches literally
+  target the word "quickfix" (real hits across both files) and teaches
+  `<C-q>` to push results to the quickfix list; the quickfix level opens
+  with `:vimgrep /quickfix/gj **/*.md` so it's self-contained even without
+  that hand-off (also sidesteps this machine's missing `rg` binary — `rg`
+  only exists here as a Claude Code shell wrapper, not a real installed
+  binary; live grep will throw "failed to spawn rg" until the user runs
+  `apt-get install ripgrep` themselves).
+- `05-vue-sfc-editing/` was planned here (Vue SFC region model, autotag
+  auto-close/rename, attribute editing, tag text object) but got cut
+  entirely rather than written: `01-sfc-structure.md` (the template/
+  script/style region overview) had zero hands-on moves in it, pure
+  lecture, and got deleted outright. The remaining hands-on parts got
+  merged into a renamed `05-embedded-languages.md` — but on reflection
+  that content wasn't worth a dedicated campaign either (autotag is a
+  minor plugin behavior, attribute editing is just the quote text objects
+  already taught in Act 1 applied to a new context), so it was cut too.
+  The one piece worth keeping — the `dit`/`dat` tag text object — lives in
+  Act 1's `03-commands/04-text-object-combos.md` instead (see above),
+  since it's generic, not Vue-specific. Nothing currently teaches
+  nvim-ts-autotag's auto-close/auto-rename behavior; revisit if that ever
+  feels worth a beat somewhere.
+- `05-lsp-basics/` — the language-agnostic half of LSP, Act 2's actual
+  closer (ends the arc, teases Act 3 by name). Three levels:
+  `01-go-to-definition.md` formalizes `gf` (used implicitly via
+  chain-links since Campaign 1, taught by name for the first time here)
+  and explains `gd` conceptually before handing off. `02-cart.vue` and
+  `03-utils.ts` are a real, working two-file Vue+TS fixture, plus a
+  minimal `tsconfig.json` + `package.json` sitting alongside them in this
+  campaign folder — added after live-testing showed the "add import" code
+  action didn't appear without them: `vtsls` falls back to TS's bare
+  "inferred project" mode with no config file present, and `vue_ls`'s own
+  `root_markers` is hardcoded to `package.json` (verified in
+  `nvim-lspconfig`'s `lsp/vue_ls.lua`), which this repo doesn't have
+  anywhere else. Both files are genuinely needed for correct project
+  detection here, not just flavor — but adding a real `tsconfig.json`
+  turned a *silent* problem into a loud one: with actual module
+  resolution now enforced, `vtsls` correctly reported `Cannot find module
+  'vue'`, because this campaign folder had no real `vue` package to
+  resolve against. That was almost certainly the true reason the "add
+  import" code action never appeared even before the config files existed
+  — a broken `vue` module resolution degrades type-checking for the whole
+  SFC, including codefix computation, even though basic scope diagnostics
+  (like `gd` correctly reporting "no definition" for `formatPrice`) kept
+  working. Fixed by running `npm install vue` inside `05-lsp-basics/` for
+  real — `package.json`/`package-lock.json` now list it, `node_modules/`
+  exists there genuinely (repo-root `.gitignore` added for `node_modules/`
+  so it never gets committed). This means the campaign folder needs `npm
+  install` run once before `Cart.vue`'s LSP features work correctly —
+  `install.sh` does not do this automatically, it only symlinks
+  `nvim-config/`; worth remembering if this lesson ever stops working
+  after a fresh clone. `vtsls` and `vue_ls` are both
+  mason-installed (confirmed live) and genuinely attach and analyze these
+  files, nothing simulated. `Cart.vue` calls a `formatPrice` function
+  without importing it, so the language server actually flags it — first
+  `]d`/`[d` (also `]e`/`[e`/`]w`/`[w`, the severity-filtered LazyVim-core
+  defaults, verified `lazyvim/config/keymaps.lua:135-140`) to jump to the
+  diagnostic without hunting for it by eye, then `<leader>ca` (routes
+  through Snacks' `vim.ui.select` override, since `picker.ui_select =
+  true` is a snacks.nvim default, confirmed in
+  `snacks/picker/config/defaults.lua`) applies the "add import" fix for
+  real. Caught and fixed a real bug in the fixture itself while
+  live-testing: the template originally wrote `formatPrice(total.value)`,
+  but Vue templates auto-unwrap top-level refs/computed, so `total` alone
+  is already the number — `total.value` there was genuinely invalid and
+  vue_ls correctly flagged it. Also covers accepting a completion suggestion: `<C-n>`/`<C-p>`
+  cycle, `<CR>`/`<C-y>` accept — **not** `<Tab>`, which this config's
+  active blink.cmp keymap preset (`enter`, set in
+  `lazyvim/plugins/extras/coding/blink.lua`) reserves for jumping between
+  snippet fields only (verified against
+  `blink.cmp/lua/blink/cmp/keymap/presets.lua`) — a `super-tab` preset
+  would behave differently, but that's not what's configured here. `gd`
+  on the now-imported `formatPrice` call jumps for real into `03-utils.ts`
+  (one definition site, so Snacks auto-confirms and skips the picker —
+  `auto_confirm = true` on `lsp_definitions`/`lsp_references`, confirmed
+  in `snacks.nvim/docs/picker.md`). `03-utils.ts` covers `K` (hover,
+  double-tap to focus the popup for scrolling) and `gr` (two real call
+  sites in `Cart.vue`, so this time the Snacks picker actually opens
+  instead of auto-jumping), then closes the campaign and Act 2.
+  Side effect worth knowing, confirmed live and left as-is (not worth
+  fixing, but caused real confusion once): the `package.json` this
+  campaign needs makes `vue_ls` root at `05-lsp-basics/` instead of the
+  repo root. LazyVim's root detection (`lazyvim/util/root.lua`) checks
+  attached LSP clients' roots *before* `.git`, and among multiple
+  candidates picks the deepest path (`table.sort(roots, function(a,b)
+  return #a > #b end)`). Since `vue_ls`'s root is deeper than `vtsls`'s
+  (which stays at the repo root via `.git`), `<leader>e`/`<leader>fe`
+  (root-dir explorer, live grep, etc.) resolve to `05-lsp-basics/`
+  whenever the current buffer is `Cart.vue` or `utils.ts` — correct
+  LazyVim behavior for a nested sub-project, just surprising in a lessons
+  repo. Contained to buffers inside that folder; reverts the moment you
+  switch to any other file. Prompted adding `<BS>`/`.` (root up/down) to
+  `04-lazyvim-basics/02-file-explorer.md` as the practical way out of it.
 
 ## Act 3: Project Management — `lessons/03-project-management/`
 
 Tooling around the project as a whole, not text editing itself — testing,
-debugging, git, AI tooling. Nothing written yet:
+debugging, git, AI tooling, language-specific LSP, diagnostics, terminal.
+Nothing written yet:
 
 - `01-testing-neotest/` — testing with neotest (Jest for NestJS, Vitest for
   Vue).
@@ -335,6 +453,22 @@ debugging, git, AI tooling. Nothing written yet:
   `lua/plugins/` as of this writing.
 - `04-claude-code/` — the Claude Code (`ai.claudecode`) integration inside
   nvim.
+- `05-typescript-nestjs-lsp/` — narrowed to TypeScript/NestJS/Vue-*specific*
+  LSP workflow only, now that the language-agnostic mechanics
+  (`gf`/`gd`/`gr`/`K`/completion/code actions/`]d`/`[d`/`]e`/`[e`/`]w`/`[w`)
+  live in Act 2's `05-lsp-basics/` instead: type-aware refactors, import
+  management, NestJS decorator support, Vue volar specifics, snippet
+  expansion nuances. Assumes `05-lsp-basics/` already covered the base
+  moves — recap by name rather than re-teaching them.
+- `06-eslint-prettier/` — ESLint + Prettier extras: format-on-save, lint
+  signs, fix commands.
+- `07-diagnostics/` — diagnostics deep-dive: trouble.nvim (`<leader>xx`,
+  `<leader>xq`), reading LSP error detail. `]d`/`[d`/`]e`/`[e`/`]w`/`[w`
+  navigation already taught in Act 2's `05-lsp-basics/` — recap by name,
+  don't re-teach.
+- `08-terminal/` — LazyVim float terminal (`<C-/>`, `<leader>ft`) and this
+  config's custom `<C-h/j/k/l>` keymaps that escape terminal mode and jump
+  directly to another window — useful specifically for the Claude Code pane.
 
 Explicitly **not** planned as lessons (per user request): a custom keymaps
 cheat sheet, and a UI tour (bufferline, lualine winbar, onedarkpro theme).

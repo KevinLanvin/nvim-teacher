@@ -8,6 +8,6 @@ Now press # instead — searches BACKWARD for the word under your cursor, the mi
 
 Press N to cycle backward through matches the other way, same N from before.
 
-Campaign cleared — Searching is fully unlocked: /, ?, *, #, and n/N to cycle through matches. Next up, Act 2, Campaign 2: Bookmarks. Cursor on the file below, gf to load it.
+Campaign cleared — Searching is fully unlocked: /, ?, *, #, and n/N to cycle through matches. Next up, Campaign 6: Tools. Cursor on the file below, gf to load it.
 
-../../02-project-editing/02-bookmarks-global.md
+../06-tools/01-join-lines.md

@@ -1,0 +1,7 @@
+{
+  "name": "lsp-basics-fixture",
+  "private": true,
+  "dependencies": {
+    "vue": "^3.5.42"
+  }
+}

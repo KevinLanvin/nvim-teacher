@@ -11,11 +11,21 @@ return {
 
       local remembered = {}
 
-      local function ask(prompt, default, completion)
-        local cwd = vim.fn.getcwd()
-        remembered[cwd] = remembered[cwd] or {}
-        local value = vim.fn.input(prompt, remembered[cwd][prompt] or default, completion)
-        remembered[cwd][prompt] = value
+      -- Buffer's detected project root (LazyVim.root.get), not vim.fn.getcwd():
+      -- nvim-dap's "${workspaceFolder}" and a bare getcwd() both resolve to
+      -- nvim's global cwd, which is wrong whenever nvim was launched from a
+      -- parent directory (e.g. this repo's root) and a file was opened from
+      -- deeper inside without :cd-ing first — the nodemon binary path below
+      -- would silently point at a node_modules that doesn't exist there.
+      local function project_root()
+        return LazyVim.root.get()
+      end
+
+      local function ask(prompt, default)
+        local root = project_root()
+        remembered[root] = remembered[root] or {}
+        local value = vim.fn.input(prompt, remembered[root][prompt] or default)
+        remembered[root][prompt] = value
         return value
       end
 
@@ -27,20 +37,23 @@ return {
             env[k] = v
           end
         end
-        return env
+        return next(env) ~= nil and env or nil
       end
 
       local live_reload_config = {
         type = "pwa-node",
         request = "launch",
         name = "Launch via nodemon + ts-node (live reload)",
-        cwd = "${workspaceFolder}",
-        runtimeExecutable = "${workspaceFolder}/node_modules/.bin/nodemon",
+        cwd = project_root,
+        runtimeExecutable = function()
+          return project_root() .. "/node_modules/.bin/nodemon"
+        end,
         runtimeArgs = function()
-          local entry = ask("Entry file (relative to project root): ", "src/index.ts", "file")
+          local root = project_root()
+          local entry = ask("Entry file (relative to project root): ", "src/index.ts")
           return {
             "--watch",
-            vim.fn.getcwd(),
+            root,
             "--ext",
             "ts,json,js",
             "--exec",

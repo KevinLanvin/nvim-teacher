@@ -1,0 +1,12 @@
+{
+  "name": "dap-practice",
+  "private": true,
+  "scripts": {
+    "start": "ts-node server.ts"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.0",
+    "ts-node": "^10.9.0",
+    "typescript": "^5.0.0"
+  }
+}
